@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="heart"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script>
+  <script>
+    const container = document.querySelector('.container');
+   
+    for (let i = 0; i < 100; i++){
+      const hearts = document.createElement('div');
+      hearts.classList.add('heart');
+      container.appendChild(hearts);    
+    }
+
+    const text = document.createElement('div');
+    text.classList.add('text');
+    text.innerHTML = `Te iubesc <br> fraiere!`;
+    container.insertBefore(text, container.childNodes[70]);
+
+    function animateHearts(){
+        anime({
+            targets: '.heart',
+            translateX: function(){
+                return anime.random(-700,700);
+            },
+            translateY: function(){
+                return anime.random(-500,500);
+            },
+            rotate: 45,
+            scale: function(){
+                return anime.random(1,5);
+            },
+            duration: 3000,
+            complete: animateHearts,
+        })
+    }
+    animateHearts();
+  </script>
+</body>
+</html>
